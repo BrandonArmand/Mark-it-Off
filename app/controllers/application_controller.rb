@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
+  
+  def authorize_user
+    if user_signed_in?
+      redirect_to users_show_path(current_user)  
+    else
+      return true
+    end
+  end
 end
