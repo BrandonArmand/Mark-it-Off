@@ -1,0 +1,8 @@
+<h4>Create a new Item</h4>
+    <%= form_for [item], url: user_items_path(current_user) do |f| %>
+        <div class="form-group">
+             <%= f.label :name, class: 'sr-only' %>
+             <%= f.text_field :name, class: 'form-control', placeholder: "Enter a name" %>
+        </div>
+    <%= f.submit "Submit Comment", class: 'btn btn-default pull-right' %>
+<% end %>

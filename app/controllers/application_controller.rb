@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   
   def authorize_user
     if user_signed_in?
-      redirect_to users_show_path(current_user)  
+      redirect_to user_path(current_user)  
     else
       return true
     end
