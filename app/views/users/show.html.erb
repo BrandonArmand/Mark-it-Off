@@ -1,6 +1,13 @@
-<h1><%= @user.username %></h1>
-<h3>User created on <%= @user.created_at %></h3>
-<h3>Last Signed in on <%= @user.last_sign_in_at %></h3>
+<div class="clearfix">
+    <% if user_signed_in? %>
+        <% if @user != current_user%>
+            <h1 class="pull-left"><%= @user.username %></h1>
+        <% end %>
+    <% end %>
+    <div class="pull-right">
+        <p>Last Signed in on <%= @user.last_sign_in_at %></p>
+    </div>
+</div>
 <% @items.each do |i|%>
     <%= render 'items/item', item: i %>
 <% end %>
