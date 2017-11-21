@@ -1,18 +1,46 @@
-<div class="clearfix">
-    <% if user_signed_in? %>
-        <% if @user != current_user%>
-            <h1 class="pull-left"><%= @user.username %></h1>
+<div>
+    <div class="clearfix">
+        <div id="flash">
+            <%= render partial: 'shared/flash_notice' %>     
+        </div>
+       
+        <% if user_signed_in? %>
+            <% if @user != current_user%>
+                <h1 class="text-center"><%= @user.username %></h1>
+                <div class="text-center">
+                    <p>Last Signed in on <%= distance_of_time_in_words(@user.last_sign_in_at, Time.now, {include_seconds: true}) %></p>
+                </div>
+            <% else %>
+                <div class="pull-right">
+                    <p>Last Signed in on <%= distance_of_time_in_words(@user.last_sign_in_at, Time.now, {include_seconds: true}) %> ago</p>
+                </div>
+            <% end %>
         <% end %>
-    <% end %>
-    <div class="pull-right">
-        <p>Last Signed in on <%= @user.last_sign_in_at %></p>
+    </div>
+    
+    <div class="items">
+        <% @newItems.each do |i|%>
+            <div class="item newItem" id='<%= i.id %>'>
+                <%= render 'items/item', item: i %>
+            </div>
+        <% end %>
+        <% if user_signed_in? %>
+            <% if @user == current_user%>
+                <% if @items.empty? %>
+                    <span class="tooltiptext"><div class="title">Welcome!</div>Getting started is easy, just fill in this box to begin your task-creating adventure!</span>
+                <% end %>
+                <%= render 'items/form', item: Item.new %>
+            <% end %>
+        <% end %>        
+        <% @regItems.each do |i|%>
+            <div class="item regItem" id='<%= i.id %>'>
+                <%= render 'items/item', item: i %>
+            </div>
+        <% end %>
+        <% @oldItems.each do |i|%>
+            <div class="item oldItem" id='<%= i.id %>'>
+                <%= render 'items/item', item: i %>
+            </div>
+        <% end %>
     </div>
 </div>
-<% @items.each do |i|%>
-    <%= render 'items/item', item: i %>
-<% end %>
-<% if user_signed_in? %>
-    <% if @user == current_user%>
-        <%= render 'items/form', item: Item.new %>
-    <% end %>
-<% end %>

@@ -10,10 +10,8 @@
   <div class="clearfix header">
     <% if user_signed_in? %>
       <h1 class="pull-right"><%= link_to current_user.username, user_path(current_user) %></h1>
-      <h3 class="pull-left"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></h3>
+      <h2 class="pull-left"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></h2>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </div>
 
   <%= yield %>

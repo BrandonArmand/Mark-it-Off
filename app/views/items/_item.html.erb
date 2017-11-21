@@ -1,2 +1,9 @@
-<h1><%= item.name %></h1>
-<p><em><%= item.created_at %></em></p>
+<div class="info">
+    <h4 class="name"><%= item.name %></h4>
+</div>
+<div class="time">
+    <p class="pull-left"><em>Created <%= distance_of_time_in_words(item.created_at, Time.now, {include_seconds: true})%> ago </em></p>
+    <% if @user == current_user%>
+        <%= link_to "", user_item_path(@user, item), method: :delete, class: 'delete glyphicon glyphicon-ok pull-right', remote: true %>
+    <% end %>
+</div>

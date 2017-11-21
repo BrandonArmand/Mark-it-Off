@@ -11,7 +11,7 @@ Faker::UniqueGenerator.clear
 end
 users = User.all
 
-75.times do
+200.times do
     Item.create!(
         user: users.sample,
         name: Faker::Lorem.sentence

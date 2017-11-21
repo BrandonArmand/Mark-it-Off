@@ -1,9 +1,7 @@
-<h4>Create a new Item</h4>
-    <%= form_for [item], url: user_items_path(current_user) do |f| %>
-        <div class="form-group">
-             <%= f.label :name, class: 'sr-only' %>
-             <%= f.text_field :name, class: 'form-control', placeholder: "Enter a name" %>
-  
-        <%= f.submit "Submit Item", class: 'btn btn-default pull-right' %>
-    </div>
-<% end %>
+<div class="item newItem">
+    <%= form_for [item], url: user_items_path(current_user), remote: true do |f| %>
+             <%= f.text_area :name, class: 'form-control input', placeholder: "New Task", autofocus: true, required: true %>
+             <%= f.submit "Save", class: "btn"%>
+    <% end %>  
+</div>
+

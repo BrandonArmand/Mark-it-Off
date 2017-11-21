@@ -1,0 +1,2 @@
+$('#<%= @item.id %>').slideUp(100, function(){ $('#<%= @item.id %>').remove(); });
+$('#flash').append('<%= j render partial: "shared/flash_notice" %>');
