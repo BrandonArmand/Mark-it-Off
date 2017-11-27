@@ -7,11 +7,11 @@
         <% if user_signed_in? %>
             <% if @user != current_user%>
                 <h1 class="text-center"><%= @user.username %></h1>
-                <div class="text-center">
+                <div class="text-center time">
                     <p>Last Signed in on <%= distance_of_time_in_words(@user.last_sign_in_at, Time.now, {include_seconds: true}) %></p>
                 </div>
             <% else %>
-                <div class="pull-right">
+                <div class="pull-right time">
                     <p>Last Signed in on <%= distance_of_time_in_words(@user.last_sign_in_at, Time.now, {include_seconds: true}) %> ago</p>
                 </div>
             <% end %>

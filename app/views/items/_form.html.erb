@@ -1,5 +1,5 @@
 <div class="item newItem">
-    <%= form_for [item], url: user_items_path(current_user), remote: true do |f| %>
+    <%= form_for [item], url: user_items_path(current_user) do |f| %>
              <%= f.text_area :name, class: 'form-control input', placeholder: "New Task", autofocus: true, required: true %>
              <%= f.submit "Save", class: "btn"%>
     <% end %>  
